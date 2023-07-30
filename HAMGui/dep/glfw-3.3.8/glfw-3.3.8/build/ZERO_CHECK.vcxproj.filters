@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\CMakeFiles\606a5000ada29cd187a9216c7725114b\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\cmake_uninstall.cmake.in">
+      <Filter>Buildsystem Input Files</Filter>
+    </None>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\examples\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\examples</Filter>
+    </None>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\glfw3.pc.in">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\glfw3Config.cmake.in">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\glfw_config.h.in">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\tests\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\tests</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{849827FB-BFFB-368C-A43E-A975C3395569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6F4A85BD-7EC1-3695-85DC-F22AF6C6BD57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files">
+      <UniqueIdentifier>{8E20E5FF-9194-36CD-AC70-67726DF29D26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\examples">
+      <UniqueIdentifier>{98537976-F1A8-35DD-ABEE-3B452B4D7C52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\src">
+      <UniqueIdentifier>{B36D8AFD-3193-38D5-A5C0-579DADCF5954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\tests">
+      <UniqueIdentifier>{D456B911-D9B7-3CE0-95D3-AE33951A357E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

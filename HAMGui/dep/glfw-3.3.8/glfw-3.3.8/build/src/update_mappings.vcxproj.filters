@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\CMakeFiles\973be681c3ff7f539937cb0ec00537e2\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\CMake\GenerateMappings.cmake" />
+    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{849827FB-BFFB-368C-A43E-A975C3395569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6F4A85BD-7EC1-3695-85DC-F22AF6C6BD57}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
