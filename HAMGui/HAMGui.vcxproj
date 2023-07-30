@@ -26,7 +26,10 @@
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_draw.cpp" />
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_tables.cpp" />
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_widgets.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\LocalClock.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Panel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dep\glfw-3.3.8\glfw-3.3.8\deps\glad\gl.h" />
@@ -39,6 +42,9 @@
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_rectpack.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_textedit.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_truetype.h" />
+    <ClInclude Include="inc\Application.h" />
+    <ClInclude Include="inc\LocalClock.h" />
+    <ClInclude Include="inc\Panel.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -131,13 +137,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\dep\glew-2.2.0\include;$(SolutionDir)HAMGui\dep\glew-2.2.0\include\GL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;glew32d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Debug;$(SolutionDir)HAMGui\dep\glew-2.2.0\lib\Debug\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreLinkEvent>
       <Command>
@@ -156,14 +162,14 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\dep\glew-2.2.0\include\GL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release;$(SolutionDir)HAMGui\dep\glew-2.2.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>

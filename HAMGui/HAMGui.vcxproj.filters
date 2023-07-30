@@ -42,6 +42,15 @@
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_widgets.cpp">
       <Filter>Resource Files\imgui-docking</Filter>
     </ClCompile>
+    <ClCompile Include="src\LocalClock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Panel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dep\imgui-docking\imgui-docking\backends\imgui_impl_glfw.h">
@@ -73,6 +82,15 @@
     </ClInclude>
     <ClInclude Include="dep\glfw-3.3.8\glfw-3.3.8\deps\glad\gl.h">
       <Filter>Resource Files\imgui-docking</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Panel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\LocalClock.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
