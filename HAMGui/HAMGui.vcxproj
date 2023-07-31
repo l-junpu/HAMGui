@@ -27,8 +27,6 @@
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_tables.cpp" />
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_widgets.cpp" />
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\Event.cpp" />
-    <ClCompile Include="src\EventManager.cpp" />
     <ClCompile Include="src\LocalClock.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Panel.cpp" />
@@ -45,9 +43,12 @@
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_rectpack.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_textedit.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_truetype.h" />
+    <ClInclude Include="dep\xxHash\xxHash32.h" />
+    <ClInclude Include="dep\xxHash\xxHash64.h" />
     <ClInclude Include="inc\Application.h" />
     <ClInclude Include="inc\Event.h" />
     <ClInclude Include="inc\EventManager.h" />
+    <ClInclude Include="inc\Hasher.h" />
     <ClInclude Include="inc\LocalClock.h" />
     <ClInclude Include="inc\Panel.h" />
   </ItemGroup>

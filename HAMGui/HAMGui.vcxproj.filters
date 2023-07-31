@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\fonts">
       <UniqueIdentifier>{facea102-1412-4773-a759-9975400bbe6c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\xxHash">
+      <UniqueIdentifier>{e9ba2f2f-f86f-40da-83f6-d24defcd1024}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -52,12 +55,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Event.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EventManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -109,6 +106,15 @@
     </ClInclude>
     <ClInclude Include="dep\fonts\static\Ruda-Bold.h">
       <Filter>Resource Files\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\xxHash\xxHash32.h">
+      <Filter>Resource Files\xxHash</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\xxHash\xxHash64.h">
+      <Filter>Resource Files\xxHash</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Hasher.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #include "imgui.h"
 #include <iostream>
 
+// Just testing locally
 #include "Event.h"
 
 struct BasicButton final : public hammer::Panel
@@ -30,14 +31,16 @@ void TestCallback1(int a)
     std::cout << "Inc A: " << ++a << std::endl;
 }
 
+struct funny_class {};
+#define stringify(str) #str
+
 int main()
 {
+
     //hammer::Application App{ "Pumpkin Chat Window", 1600, 900 };
-
-    hammer::StandaloneEvent<int> SAL_E;
-
-    SAL_E.RegisterEvent<TestCallback1>();
-    SAL_E.BroadcastEvent(2);
+    //hammer::StandaloneEvent<int> SAL_E;
+    //SAL_E.RegisterEvent<TestCallback1>();
+    //SAL_E.BroadcastEvent(2);
 
     //App.AddPanel<BasicButton>("BasicButton");
     //App.Loop();

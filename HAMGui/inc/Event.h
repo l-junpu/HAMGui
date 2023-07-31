@@ -43,8 +43,8 @@ namespace hammer
 				 , typename T_HOST >
 		void RegisterEvent( T_HOST* System ) noexcept;
 
-		template < typename T_HOST >
-		void RemoveEvent( T_HOST* System ) noexcept;
+		//template < typename T_HOST >
+		//void RemoveEvent( T_HOST* System ) noexcept;
 
 		void BroadcastEvent( T_ARGS&&... Args ) const noexcept;
 
@@ -88,22 +88,25 @@ namespace hammer
 	template < typename... T_ARGS >
 	template < auto		T_FUNCTION
 			 , typename T_HOST >
-	inline void ClassEvent<T_ARGS...>::RegisterEvent( T_HOST* System ) noexcept
+	inline void ClassEvent<T_ARGS...>::RegisterEvent( T_HOST* Host ) noexcept
 	{
-		
-	}
-
-	template < typename... T_ARGS >
-	template < typename T_HOST >
-	inline void ClassEvent<T_ARGS...>::RemoveEvent( T_HOST* System ) noexcept
-	{
-		
+		m_Events.push_back( Info
+							{
+								.m_pHost     = Host
+							,	.m_pCallback = []( void* FHost, T_ARGS&&... Args ) constexpr noexcept
+											   {
+											       std::invoke( T_FUNCTION, reinterpret_cast<T_HOST*>( FHost ), std::forward<T_ARGS&&>( Args )... );
+											   }
+							} );
 	}
 
 	template < typename... T_ARGS >
 	inline void ClassEvent<T_ARGS...>::BroadcastEvent( T_ARGS&&... Args ) const noexcept
 	{
-		
+		for ( const auto& Event : m_Events )
+		{
+			Event.m_pCallback( Event.m_pHost, std::forward<T_ARGS&&>( Args )... );
+		}
 	}
 
 
@@ -123,9 +126,9 @@ namespace hammer
 	template < typename... T_ARGS >
 	inline void StandaloneEvent<T_ARGS...>::BroadcastEvent( T_ARGS&&... Args ) const noexcept
 	{
-		for ( const auto& E : m_Events )
+		for ( const auto& Event : m_Events )
 		{
-			E.m_pCallback( std::forward<T_ARGS&&>( Args )... );
+			Event.m_pCallback( std::forward<T_ARGS&&>( Args )... );
 		}
 	}
 }
