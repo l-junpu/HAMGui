@@ -27,11 +27,14 @@
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_tables.cpp" />
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_widgets.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Event.cpp" />
+    <ClCompile Include="src\EventManager.cpp" />
     <ClCompile Include="src\LocalClock.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Panel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dep\fonts\static\Ruda-Bold.h" />
     <ClInclude Include="dep\glfw-3.3.8\glfw-3.3.8\deps\glad\gl.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\backends\imgui_impl_glfw.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\backends\imgui_impl_opengl3.h" />
@@ -43,6 +46,8 @@
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_textedit.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_truetype.h" />
     <ClInclude Include="inc\Application.h" />
+    <ClInclude Include="inc\Event.h" />
+    <ClInclude Include="inc\EventManager.h" />
     <ClInclude Include="inc\LocalClock.h" />
     <ClInclude Include="inc\Panel.h" />
   </ItemGroup>
@@ -137,7 +142,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\inc;$(SolutionDir)HAMGui\dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -162,7 +167,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\inc;$(SolutionDir)HAMGui\dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

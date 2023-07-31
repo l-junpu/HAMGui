@@ -16,6 +16,9 @@
     <Filter Include="Resource Files\imgui-docking">
       <UniqueIdentifier>{c8d2747c-cd0c-4623-b25c-30bd4afa714d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\fonts">
+      <UniqueIdentifier>{facea102-1412-4773-a759-9975400bbe6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -49,6 +52,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EventManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -91,6 +100,15 @@
     </ClInclude>
     <ClInclude Include="inc\LocalClock.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\EventManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\fonts\static\Ruda-Bold.h">
+      <Filter>Resource Files\fonts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
