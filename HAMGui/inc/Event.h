@@ -16,13 +16,15 @@ namespace hammer
 
 	struct EventInterface
 	{
-		~EventInterface() = default;
+		virtual ~EventInterface() = default;
 	};
 
 
 	template < typename... T_ARGS >
-	struct ClassEvent : public EventInterface
+	class ClassEvent : public EventInterface
 	{
+	public:
+
 		static constexpr auto Type = EventType::CLASS_EVENT;
 
 		struct Info
@@ -33,11 +35,9 @@ namespace hammer
 			Callback*	m_pCallback;
 		};
 
-
 		ClassEvent( void ) noexcept = default;
 		ClassEvent( const ClassEvent& ) noexcept = delete;
 		virtual ~ClassEvent() = default;
-
 
 		template < auto		T_FUNCTION
 				 , typename T_HOST >
@@ -48,13 +48,17 @@ namespace hammer
 
 		void BroadcastEvent( T_ARGS&&... Args ) const noexcept;
 
+	private:
+
 		std::vector<ClassEvent::Info> m_Events;
 	};
 
 
 	template < typename... T_ARGS >
-	struct StandaloneEvent : public EventInterface
+	class StandaloneEvent : public EventInterface
 	{
+	public:
+
 		static constexpr auto Type = EventType::STANDALONE_EVENT;
 
 		struct Info
@@ -64,11 +68,9 @@ namespace hammer
 			Callback*	m_pCallback;
 		};
 
-
 		StandaloneEvent( void ) noexcept = default;
 		StandaloneEvent( const StandaloneEvent& ) noexcept = delete;
 		virtual ~StandaloneEvent() = default;
-
 
 		template < auto T_FUNCTION >
 		void RegisterEvent( void ) noexcept;
@@ -79,8 +81,20 @@ namespace hammer
 
 		void BroadcastEvent( T_ARGS&&... Args ) const noexcept;
 
+	private:
+
 		std::vector<StandaloneEvent::Info> m_Events;
 	};
+
+
+
+
+
+
+
+
+
+
 
 
 

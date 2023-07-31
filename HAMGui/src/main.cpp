@@ -5,6 +5,7 @@
 
 // Just testing locally
 #include "Event.h"
+#include "EventManager.h"
 
 struct BasicButton final : public hammer::Panel
 {
@@ -26,16 +27,34 @@ struct BasicButton final : public hammer::Panel
     }
 };
 
-void TestCallback1(int a)
+void TestCallback1(int a, float b)
 {
-    std::cout << "Inc A: " << ++a << std::endl;
+    std::cout << "++A: " << ++a << std::endl;
+    b += a;
+    std::cout << "A + B: " << ++a << std::endl;
 }
 
-struct funny_class {};
-#define stringify(str) #str
+using MyTestEvent = hammer::StandaloneEvent<int, float>;
+using MyClassEvent = hammer::ClassEvent<int, float>;
+
+struct TestClass
+{
+    void FunnyConversion(int a, float b)
+    {
+        std::cout << "++A: " << ++a << std::endl;
+        b += a;
+        std::cout << "A + B: " << ++a << std::endl;
+    }
+};
 
 int main()
 {
+    hammer::EventMgr.RegisterStandaloneEvent<MyTestEvent, TestCallback1>();
+    hammer::EventMgr.BroadcastEvent<MyTestEvent>(69, 0.0f);
+
+    TestClass testttt;
+    hammer::EventMgr.RegisterClassEvent<MyClassEvent, &TestClass::FunnyConversion>(&testttt);
+    hammer::EventMgr.BroadcastEvent<MyClassEvent>(70, 0.0f);
 
     //hammer::Application App{ "Pumpkin Chat Window", 1600, 900 };
     //hammer::StandaloneEvent<int> SAL_E;
