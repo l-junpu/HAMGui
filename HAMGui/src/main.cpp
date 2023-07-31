@@ -56,6 +56,7 @@ int main()
     hammer::EventMgr.RegisterClassEvent<MyClassEvent, &TestClass::FunnyConversion>(&testttt);
     hammer::EventMgr.BroadcastEvent<MyClassEvent>(70, 0.0f);
 
+
     //hammer::Application App{ "Pumpkin Chat Window", 1600, 900 };
     //hammer::StandaloneEvent<int> SAL_E;
     //SAL_E.RegisterEvent<TestCallback1>();
