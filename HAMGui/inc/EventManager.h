@@ -72,7 +72,7 @@ namespace hammer
 			 , auto     T_FUNCTION >
 	inline void EventManager::RegisterStandaloneEvent( void ) noexcept
 	{
-		auto Hashed_EventName = Hash64( Str(T_EVENT) );
+		auto Hashed_EventName = Hash64( typeid(T_EVENT).name() );
 		auto It               = m_StandaloneEventsMap.find( Hashed_EventName );
 
 		if ( It == m_StandaloneEventsMap.end() )
@@ -90,7 +90,7 @@ namespace hammer
 			 , typename T_HOST >
 	inline void EventManager::RegisterClassEvent( T_HOST* Host ) noexcept
 	{
-		auto Hashed_EventName = Hash64( Str(T_EVENT) );
+		auto Hashed_EventName = Hash64( typeid(T_EVENT).name() );
 		auto It               = m_ClassEventsMap.find( Hashed_EventName );
 
 		if ( It == m_ClassEventsMap.end() )
@@ -107,7 +107,7 @@ namespace hammer
 			 , typename... T_ARGS >
 	inline void EventManager::BroadcastEvent( T_ARGS&&... Args ) const noexcept
 	{
-		auto Hashed_EventName = Hash64( Str(T_EVENT) );
+		auto Hashed_EventName = Hash64( typeid(T_EVENT).name() );
 
 		if ( T_EVENT::Type == EventType::STANDALONE_EVENT )
 		{

@@ -35,6 +35,7 @@ void TestCallback1(int a, float b)
 }
 
 using MyTestEvent = hammer::StandaloneEvent<int, float>;
+struct StructTestEvent : hammer::StandaloneEvent<int, float> {}; // recommended to use this method - define a struct - we should create macros to facilitate the ease of creation
 using MyClassEvent = hammer::ClassEvent<int, float>;
 
 struct TestClass
@@ -50,7 +51,10 @@ struct TestClass
 int main()
 {
     hammer::EventMgr.RegisterStandaloneEvent<MyTestEvent, TestCallback1>();
+    hammer::EventMgr.RegisterStandaloneEvent<StructTestEvent, TestCallback1>();
     hammer::EventMgr.BroadcastEvent<MyTestEvent>(69, 0.0f);
+    hammer::EventMgr.BroadcastEvent<MyTestEvent2>(69, 0.0f);
+    hammer::EventMgr.BroadcastEvent<StructTestEvent>(69, 0.0f);
 
     TestClass testttt;
     hammer::EventMgr.RegisterClassEvent<MyClassEvent, &TestClass::FunnyConversion>(&testttt);
