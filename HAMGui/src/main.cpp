@@ -53,7 +53,6 @@ int main()
     hammer::EventMgr.RegisterStandaloneEvent<MyTestEvent, TestCallback1>();
     hammer::EventMgr.RegisterStandaloneEvent<StructTestEvent, TestCallback1>();
     hammer::EventMgr.BroadcastEvent<MyTestEvent>(69, 0.0f);
-    hammer::EventMgr.BroadcastEvent<MyTestEvent2>(69, 0.0f);
     hammer::EventMgr.BroadcastEvent<StructTestEvent>(69, 0.0f);
 
     TestClass testttt;
