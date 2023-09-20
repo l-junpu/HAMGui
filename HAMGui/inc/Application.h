@@ -86,9 +86,9 @@ namespace hammer
 		                             , T_ARGS&&... Args )
 	{
 		static_assert( std::is_base_of_v<hammer::Panel, T_Panel>					// Can replace this with concepts later or keep this to potentially downgrade
-						, "Verify that T_Pannel is derived from hammer::Panel");
+					 , "Verify that T_Pannel is derived from hammer::Panel" );
 		assert( !PanelExists( PanelName )
-			 && "Panel has already been added");
+			 && "Panel has already been added" );
 
 		auto NewPanel = std::make_shared<T_Panel>( PanelName, std::forward<T_ARGS&&>(Args)... );
 			
