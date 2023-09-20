@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\CMakeFiles\973be681c3ff7f539937cb0ec00537e2\INSTALL_force.rule">
+    <CustomBuild Include="C:\Users\leeju\OneDrive\Desktop\Documents\Software Programs\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\CMakeFiles\d86ef9c850c0bffeee2dd096768972dc\INSTALL_force.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{849827FB-BFFB-368C-A43E-A975C3395569}</UniqueIdentifier>
+      <UniqueIdentifier>{5A5650BE-8C84-3542-963F-794C4E3F9CBD}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

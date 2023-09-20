@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/User/source/repos/HAMGui/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/tests
+# Install script for directory: C:/Users/leeju/OneDrive/Desktop/Documents/Software Programs/HAMGui/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

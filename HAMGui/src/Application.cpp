@@ -1,5 +1,7 @@
 #include "Application.h"
+#include "HamTerminal.h"
 #include "fonts/static/Ruda-Bold.h"
+#include "ConfigReader.h"
 
 #include <filesystem>
 #include <GLFW/glfw3.h>
@@ -7,24 +9,52 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
+#include <spdlog/spdlog.h>
+
 #include <iostream>
 
 namespace hammer
 {
 	Application::Application( const ApplicationSpecs& Specs ) :
 		m_Specs{ Specs }
+	//,   m_TerminalCommands{ }
+	//,	m_Terminal{ m_TerminalCommands }
 	{
 		InitializeWindow();
 		InitializeTheme();
+		InitializeTerminal();
 	}
 
 	Application::Application( const std::string& WinName, uint32_t Width, uint32_t Height ) :
 		m_Specs{ ApplicationSpecs{ .m_Name   = WinName
 								 , .m_Width  = Width
 								 , .m_Height = Height } }
+	//,   m_TerminalCommands{ }
+	//,	m_Terminal{ m_TerminalCommands }
 	{
 		InitializeWindow();
 		InitializeTheme();
+		InitializeTerminal();
+	}
+
+	Application::Application( const std::string& ConfigFilePath ) :
+		m_ConfigPath{ ConfigFilePath }
+	//,	m_TerminalCommands{ }
+	//,	m_Terminal{ m_TerminalCommands }
+	{
+		// Open & read file
+		ConfigReader Reader( ConfigFilePath );
+
+		m_Specs.m_Name                 = Reader.GetVal<std::string>( "Application", "name" );
+		m_Specs.m_Width                = Reader.GetVal<uint32_t>   ( "Application", "width" );
+		m_Specs.m_Height               = Reader.GetVal<uint32_t>   ( "Application", "height" );
+		m_Specs.m_bFullscreen          = Reader.GetVal<bool>       ( "Application", "enable_fullscreen" );
+		m_Specs.m_bEnableTerminal      = Reader.GetVal<bool>       ( "Application", "enable_terminal" );
+		m_Specs.m_bEnableDocking       = Reader.GetVal<bool>       ( "Application", "enable_docking" );
+
+		InitializeWindow();
+		InitializeTheme();
+		InitializeTerminal();
 	}
 
 	Application::~Application( void )
@@ -68,14 +98,15 @@ namespace hammer
 			// Docking space
 			ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 
-			// Update user custom panels
+			// Update user custom panels / ImTerm console window
 			auto Dt = m_Clock.GetDt();
-			for (auto& p : m_PanelList) p->PreUpdate (Dt);
-			for (auto& p : m_PanelList) p->Update    (Dt);
-			for (auto& p : m_PanelList) p->PostUpdate(Dt);
+			for (auto& p : m_PanelList)      p->PreUpdate (Dt);
+			for (auto& p : m_PanelList)      p->Update    (Dt);
+			for (auto& p : m_PanelList)      p->PostUpdate(Dt);
+			if ( m_Specs.m_bEnableTerminal ) m_Terminal.ShowTerminal();
 
-			// Your ImGui interface here
-			ImGui::ShowDemoWindow(); // Example ImGui demo window
+			// Example ImGui demo window
+			ImGui::ShowDemoWindow();
 
 			// Rendering
 			ImGui::Render();
@@ -114,6 +145,12 @@ namespace hammer
 
 		// Make the window's context current
 		glfwMakeContextCurrent(m_pApplication);
+		// Enable windowed fullscreen
+		if ( m_Specs.m_bFullscreen )
+		{
+			glfwSetWindowAttrib(m_pApplication, GLFW_DECORATED, GLFW_FALSE);
+			glfwMaximizeWindow(m_pApplication);
+		}
 
 		// Initialize ImGui with GLFW and OpenGL
 		IMGUI_CHECKVERSION();
@@ -122,10 +159,19 @@ namespace hammer
 		ImGui_ImplGlfw_InitForOpenGL(m_pApplication, true);
 		ImGui_ImplOpenGL3_Init("#version 410");
 
-		// Enable docking support
-		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+		// Toggle docking support
+		if ( m_Specs.m_bEnableDocking ) io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+		else                            io.ConfigFlags &= ~ImGuiConfigFlags_DockingEnable;
 
 		return 0;
+	}
+
+	void Application::InitializeTerminal(void)
+	{
+		if ( m_Specs.m_bEnableTerminal )
+		{
+			m_Terminal.InitializeTerminal( m_ConfigPath );
+		}
 	}
 
 	void Application::InitializeTheme( void )
@@ -157,7 +203,7 @@ namespace hammer
 		style->Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
 		style->Colors[ImGuiCol_FrameBgActive] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
 		style->Colors[ImGuiCol_TitleBg] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
-		style->Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(1.00f, 0.98f, 0.95f, 0.75f);
+		style->Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.09f, 0.09f, 0.13f, 1.00f);
 		style->Colors[ImGuiCol_TitleBgActive] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
 		style->Colors[ImGuiCol_MenuBarBg] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
 		style->Colors[ImGuiCol_ScrollbarBg] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);

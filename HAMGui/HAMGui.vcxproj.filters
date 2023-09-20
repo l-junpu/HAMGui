@@ -22,6 +22,15 @@
     <Filter Include="Resource Files\xxHash">
       <UniqueIdentifier>{e9ba2f2f-f86f-40da-83f6-d24defcd1024}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\spdlog">
+      <UniqueIdentifier>{05acbcbe-b432-4c75-8ac7-0c79b57f0c7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\ImTerm">
+      <UniqueIdentifier>{f1b459d9-9c39-4c53-b261-089735a7b742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\mINI">
+      <UniqueIdentifier>{06f5fef4-7733-4bdb-9229-38ea69087e94}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -55,6 +64,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HamTerminal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ConfigReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,6 +129,51 @@
       <Filter>Resource Files\xxHash</Filter>
     </ClInclude>
     <ClInclude Include="inc\Hasher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\spdlog.h">
+      <Filter>Resource Files\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\sinks\basic_file_sink.h">
+      <Filter>Resource Files\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\sinks\daily_file_sink.h">
+      <Filter>Resource Files\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\sinks\rotating_file_sink.h">
+      <Filter>Resource Files\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\sinks\stdout_color_sinks.h">
+      <Filter>Resource Files\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\stopwatch.h">
+      <Filter>Resource Files\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\fmt\bin_to_hex.h">
+      <Filter>Resource Files\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\pattern_formatter.h">
+      <Filter>Resource Files\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\ImTerm-master\include\imterm\terminal.hpp">
+      <Filter>Resource Files\ImTerm</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\HamTerminal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\ImTerm-master\include\imterm\misc.hpp">
+      <Filter>Resource Files\ImTerm</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\ImTerm-master\include\imterm\terminal_helpers.hpp">
+      <Filter>Resource Files\ImTerm</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\ImTerm-master\include\imterm\utils.hpp">
+      <Filter>Resource Files\ImTerm</Filter>
+    </ClInclude>
+    <ClInclude Include="dep\mINI-master\src\mini\ini.h">
+      <Filter>Resource Files\mINI</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ConfigReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

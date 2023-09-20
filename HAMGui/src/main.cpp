@@ -1,11 +1,19 @@
 #include "Application.h"
 
 #include "imgui.h"
+#include <spdlog/spdlog.h>
+
 #include <iostream>
 
 // Just testing locally
 #include "Event.h"
 #include "EventManager.h"
+
+#include <mini/ini.h>
+
+
+#include <filesystem>
+
 
 struct BasicButton final : public hammer::Panel
 {
@@ -20,7 +28,7 @@ struct BasicButton final : public hammer::Panel
         // Create a simple window with a button and a label
         ImGui::Begin("Hello, ImGui!");
         if (ImGui::Button("Click Me!")) {
-            std::cout << "Button clicked!" << std::endl;
+            spdlog::warn("Warning: Button clicked!");
         }
         ImGui::Text("Hello, world!");
         ImGui::End();
@@ -59,14 +67,11 @@ int main()
     hammer::EventMgr.RegisterClassEvent<MyClassEvent, &TestClass::FunnyConversion>(&testttt);
     hammer::EventMgr.BroadcastEvent<MyClassEvent>(70, 0.0f);
 
+    hammer::Application App{ CURRENT_FOLDER_PATH + "\\cfg\\ApplicationConfig.ini" };
 
-    //hammer::Application App{ "Pumpkin Chat Window", 1600, 900 };
-    //hammer::StandaloneEvent<int> SAL_E;
-    //SAL_E.RegisterEvent<TestCallback1>();
-    //SAL_E.BroadcastEvent(2);
+    App.AddPanel<BasicButton>("BasicButton");
 
-    //App.AddPanel<BasicButton>("BasicButton");
-    //App.Loop();
+    App.Loop();
     
     return 0;
 }

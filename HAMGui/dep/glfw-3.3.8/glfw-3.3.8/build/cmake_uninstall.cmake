@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "C:/Users/User/source/repos/HAMGui/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/build/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/User/source/repos/HAMGui/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/build/install_manifest.txt\"")
+if (NOT EXISTS "C:/Users/leeju/OneDrive/Desktop/Documents/Software Programs/HAMGui/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/build/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/leeju/OneDrive/Desktop/Documents/Software Programs/HAMGui/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/build/install_manifest.txt\"")
 endif()
 
-file(READ "C:/Users/User/source/repos/HAMGui/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/build/install_manifest.txt" files)
+file(READ "C:/Users/leeju/OneDrive/Desktop/Documents/Software Programs/HAMGui/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/build/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

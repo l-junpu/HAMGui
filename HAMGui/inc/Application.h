@@ -7,20 +7,29 @@
 
 #include <GLFW/glfw3.h>
 
+#include <spdlog/spdlog.h>
+#include <imterm/terminal.hpp>
+#include "HamTerminal.h"
+
 #include <string>
 #include <vector>
 #include <memory>
 #include <cstdint>
 #include <cassert>
 #include <functional>
+#include <filesystem>
 
 namespace hammer
 {
 	struct ApplicationSpecs
 	{
-		std::string  m_Name	  = "Default Application Name";
-		uint32_t	 m_Width  = 1600;
-		uint32_t	 m_Height = 900;
+		std::string  m_Name	        = "Default Application Name";
+		uint32_t	 m_Width        = 1600;
+		uint32_t	 m_Height       = 900;
+
+		bool m_bFullscreen          = true;
+		bool m_bEnableTerminal      = true;
+		bool m_bEnableDocking       = true;
 	};
 
 	class Application
@@ -32,7 +41,9 @@ namespace hammer
 
 		Application( const std::string&       WinName
 				   , uint32_t                 Width
-				   , uint32_t                 Height ); // allow fps customizations
+				   , uint32_t                 Height ); // allow for fps configuration eventually
+
+		Application( const std::string&       ConfigFilePath );
 
 		~Application( void );
 
@@ -48,19 +59,22 @@ namespace hammer
 
 	private:
 
-		void InitializeTheme ( void );
-		int  InitializeWindow( void );
-		void TerminateWindow ( void );
-		bool PanelExists( const std::string&  PanelName );
+		void InitializeTheme   ( void );
+		int  InitializeWindow  ( void );
+		void InitializeTerminal( void );
+		void TerminateWindow   ( void );
+		bool PanelExists       ( const std::string&  PanelName );
 
 
 		bool                                  m_Running             = true;
+		std::string                           m_ConfigPath          = {};
 		Clock								  m_Clock               = {};
 		ApplicationSpecs					  m_Specs               = {};
 		GLFWwindow*		                      m_pApplication        = nullptr;
 		std::function<void()>                 m_ApplicationCallback = {};
 		std::vector<std::shared_ptr<Panel>>   m_PanelList           = {};
 		std::unordered_map<std::string, int>  m_PanelMapping        = {};
+		hammer::TerminalLoggerManager         m_Terminal;
 	};
 
 

@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\CMakeFiles\973be681c3ff7f539937cb0ec00537e2\update_mappings.rule">
+    <CustomBuild Include="C:\Users\leeju\OneDrive\Desktop\Documents\Software Programs\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\CMakeFiles\d86ef9c850c0bffeee2dd096768972dc\update_mappings.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\leeju\OneDrive\Desktop\Documents\Software Programs\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\mappings.h.in">
+    <None Include="C:\Users\leeju\OneDrive\Desktop\Documents\Software Programs\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\src\mappings.h.in">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\CMake\GenerateMappings.cmake" />
-    <None Include="C:\Users\User\source\repos\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\CMakeFiles\update_mappings" />
+    <None Include="C:\Users\leeju\OneDrive\Desktop\Documents\Software Programs\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\CMake\GenerateMappings.cmake" />
+    <None Include="C:\Users\leeju\OneDrive\Desktop\Documents\Software Programs\HAMGui\HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\CMakeFiles\update_mappings" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{849827FB-BFFB-368C-A43E-A975C3395569}</UniqueIdentifier>
+      <UniqueIdentifier>{5A5650BE-8C84-3542-963F-794C4E3F9CBD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{6F4A85BD-7EC1-3695-85DC-F22AF6C6BD57}</UniqueIdentifier>
+      <UniqueIdentifier>{6B64B170-50A9-3AC5-9132-EA4F61014E48}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

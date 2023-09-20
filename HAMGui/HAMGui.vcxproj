@@ -27,6 +27,8 @@
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_tables.cpp" />
     <ClCompile Include="dep\imgui-docking\imgui-docking\imgui_widgets.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\ConfigReader.cpp" />
+    <ClCompile Include="src\HamTerminal.cpp" />
     <ClCompile Include="src\LocalClock.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Panel.cpp" />
@@ -43,12 +45,27 @@
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_rectpack.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_textedit.h" />
     <ClInclude Include="dep\imgui-docking\imgui-docking\imstb_truetype.h" />
+    <ClInclude Include="dep\ImTerm-master\include\imterm\misc.hpp" />
+    <ClInclude Include="dep\ImTerm-master\include\imterm\terminal.hpp" />
+    <ClInclude Include="dep\ImTerm-master\include\imterm\terminal_helpers.hpp" />
+    <ClInclude Include="dep\ImTerm-master\include\imterm\utils.hpp" />
+    <ClInclude Include="dep\mINI-master\src\mini\ini.h" />
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\fmt\bin_to_hex.h" />
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\pattern_formatter.h" />
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\sinks\basic_file_sink.h" />
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\sinks\daily_file_sink.h" />
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\sinks\rotating_file_sink.h" />
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\sinks\stdout_color_sinks.h" />
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\spdlog.h" />
+    <ClInclude Include="dep\spdlog-1.x\spdlog-1.x\include\spdlog\stopwatch.h" />
     <ClInclude Include="dep\xxHash\xxHash32.h" />
     <ClInclude Include="dep\xxHash\xxHash64.h" />
     <ClInclude Include="inc\Application.h" />
+    <ClInclude Include="inc\ConfigReader.h" />
     <ClInclude Include="inc\Event.h" />
     <ClInclude Include="inc\EventManager.h" />
     <ClInclude Include="inc\Hasher.h" />
+    <ClInclude Include="inc\HamTerminal.h" />
     <ClInclude Include="inc\LocalClock.h" />
     <ClInclude Include="inc\Panel.h" />
   </ItemGroup>
@@ -143,20 +160,21 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\inc;$(SolutionDir)HAMGui\dep</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\inc;$(SolutionDir)HAMGui\dep;$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\include;$(SolutionDir)HAMGui\dep\ImTerm-master\include;$(SolutionDir)HAMGui\dep\mINI-master\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;spdlogd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Debug;$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreLinkEvent>
       <Command>
       </Command>
     </PreLinkEvent>
     <PreBuildEvent>
-      <Command>copy /Y / D "$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Debug\glfw3.dll" "$(OutDir)"</Command>
+      <Command>copy /Y / D "$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Debug\glfw3.dll" "$(OutDir)"
+copy /Y / D "$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Debug\spdlogd.lib" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -168,22 +186,23 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\inc;$(SolutionDir)HAMGui\dep</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\inc;$(SolutionDir)HAMGui\dep;$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\include;;$(SolutionDir)HAMGui\dep\mINI-master\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release;$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;spdlog.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
       <Command>
       </Command>
     </PreLinkEvent>
     <PreBuildEvent>
-      <Command>copy /Y / D "$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release\glfw3.dll" "$(OutDir)"</Command>
+      <Command>copy /Y / D "$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release\glfw3.dll" "$(OutDir)"
+copy /Y / D "$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Release\spdlog.lib" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

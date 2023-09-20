@@ -113,13 +113,19 @@ namespace hammer
 		{
 			auto It = m_StandaloneEventsMap.find( Hashed_EventName );
 			assert( It != m_StandaloneEventsMap.end() && "Event has yet to be registered..." );
-			static_cast<T_EVENT*>( It->second )->BroadcastEvent( std::forward<T_ARGS&&>( Args )... );
+			if ( It->second )
+			{
+				static_cast<T_EVENT*>( It->second )->BroadcastEvent( std::forward<T_ARGS&&>( Args )... );
+			}
 		}
 		else if ( T_EVENT::Type == EventType::CLASS_EVENT )
 		{
 			auto It = m_ClassEventsMap.find( Hashed_EventName );
 			assert( It != m_ClassEventsMap.end() && "Event has yet to be registered..." );
-			static_cast<T_EVENT*>( It->second )->BroadcastEvent( std::forward<T_ARGS&&>( Args )... );
+			if ( It->second )
+			{
+				static_cast<T_EVENT*>(It->second)->BroadcastEvent(std::forward<T_ARGS&&>(Args)...);
+			}
 		}
 	}
 }
