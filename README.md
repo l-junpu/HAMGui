@@ -1,24 +1,28 @@
 # HAMGui
 
-Notes:
-- glfw3.3.8 and spdlog requires the .sln to be manually built
-	- Command goes something like this: cmake -S . -B build -G "Visual Studio 17 2022" -A x64 -T "v142" -DCMAKE_CXX_STANDARD=20
+## Notes
 
-To Do:
-- Test out mINI to see how it works and create configuration files that allow for window customization                // Done - Might want to extend this to config buttons that can be set inside of imgui
-	- Fullscreen / Resizable / Docking Enabled / Etc...
-- Add customization option to toggle Console Terminal / ImGui							                              // Partially - ImGui panel toggling stuff not done yet
-- Add spdlog log to imterm								         													  // Done
-- Make spdlog_mt wrapper class                                                                                        // Done
-- Allow for configuration of spdlog/imterm during runtime															  // Might not want to do this since its slower
+- `BuildScript.bat` builds glfw 3.3.8 and spdlog in Debug and Release modes using Visual Studio 2022, x64, C++20, and the `v143` toolset; manual builds of their solutions are not required by the script.
 
+## To Do
 
-- Write batch file to compile and build required
-- Add input handling options - Maybe bitset (Add this as a utility class and reorganize utility files)
-	- Released
-	- Held
-	- Pressed
-- Clean up im_term command line commands
-- Allow for users to add custom commands externally
-	- This is for use when we integrate this library into our chat console
-- Allow for creation of buttons that are able to have images overlayed (Similar to clicking on the left side of discord)
+- **Done:** Test mINI and create configuration files for window customization.
+  - Fullscreen, resizable, docking enabled, etc.
+  - Possible extension: configure buttons from within ImGui.
+- **Partial:** Add customization options to toggle the console terminal and ImGui; ImGui panel toggling is not done yet.
+- **Done:** Add spdlog logging to imterm.
+- **Done:** Make a `spdlog_mt` wrapper class.
+- **Planned (under consideration):** Allow runtime configuration of spdlog/imterm; this may be undesirable because it is slower.
+- **Planned:** Write a batch file to compile and build required dependencies.
+- **Planned:** Add input handling options, possibly using a bitset (as a utility class, with utility files reorganized).
+  - Released
+  - Held
+  - Pressed
+- **Planned:** Clean up im_term command-line commands.
+- **Planned:** Allow users to add custom commands externally.
+  - Intended for integration into our chat console.
+- **Planned:** Allow creation of buttons with image overlays (similar to clicking on the left side of Discord).
+
+## Contributing
+
+Contributions are welcome. Please open an issue to discuss proposed changes or submit a pull request with a clear description of your changes.
