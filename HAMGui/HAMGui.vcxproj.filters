@@ -31,6 +31,9 @@
     <Filter Include="Resource Files\mINI">
       <UniqueIdentifier>{06f5fef4-7733-4bdb-9229-38ea69087e94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\llama">
+      <UniqueIdentifier>{4d0e244a-45da-4137-a68f-97b1af4c33ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

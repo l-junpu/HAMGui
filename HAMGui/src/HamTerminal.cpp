@@ -21,7 +21,7 @@ namespace hammer
 	{
 		constexpr std::array CommandList
 		{
-			TerminalCommands::command_type{"clear", "clears the terminal screen", TerminalCommands::Clear, TerminalCommands::InvalidCommand},
+			TerminalCommands::command_type{"", "clears the terminal screen", TerminalCommands::Clear, TerminalCommands::InvalidCommand},
 			TerminalCommands::command_type{"echo", "prints text", TerminalCommands::Echo, TerminalCommands::InvalidCommand},
 			TerminalCommands::command_type{"exit", "closes this terminal", TerminalCommands::Exit, TerminalCommands::InvalidCommand},
 			TerminalCommands::command_type{"help", "show this help", TerminalCommands::Help, TerminalCommands::InvalidCommand},
@@ -39,7 +39,29 @@ namespace hammer
 
 	void TerminalCommands::Clear(argument_type& arg) noexcept
 	{
-		arg.term.clear();
+		//arg.term.clear();
+		std::string str{};
+		auto it = std::next(arg.command_line.begin(), 0);
+		while (it != arg.command_line.end() && it->empty())
+		{
+			++it;
+		}
+		if (it != arg.command_line.end())
+		{
+			str = *it;
+			for (++it; it != arg.command_line.end(); ++it)
+			{
+				if (it->empty())
+				{
+					continue;
+				}
+				str.reserve(str.size() + it->size() + 1);
+				str += ' ';
+				str += *it;
+			}
+		}
+
+		arg.term.add_message(ImTerm::message(ImTerm::message::severity::severity_t::trace, "gotcho weird message"));
 	}
 
 	void TerminalCommands::Echo(argument_type& arg) noexcept
@@ -82,7 +104,7 @@ namespace hammer
 					str += *it;
 				}
 			}
-			//arg.term.add_formatted("{}", str);
+			arg.term.add_message(ImTerm::message(ImTerm::message::severity::severity_t::trace, str));
 		}
 	}
 

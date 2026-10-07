@@ -93,13 +93,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -186,15 +186,15 @@ copy /Y / D "$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Debug\spdlogd.
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\inc;$(SolutionDir)HAMGui\dep;$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\include;;$(SolutionDir)HAMGui\dep\mINI-master\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\include;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking;$(SolutionDir)HAMGui\dep\imgui-docking\imgui-docking\backends;$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\deps;$(SolutionDir)HAMGui\inc;$(SolutionDir)HAMGui\dep;$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\include;$(SolutionDir)HAMGui\dep\mINI-master\src;$(SolutionDir)HAMGui\dep\ImTerm-master\include;$(SolutionDir)HAMGui\dep\llama.cpp\include;$(SolutionDir)HAMGui\dep\llama.cpp\ggml\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release;$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;spdlog.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release;$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Release;$(SolutionDir)HAMGui\dep\llama.cpp\build\src\Release;$(SolutionDir)HAMGui\dep\llama.cpp\build\ggml\src\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;spdlog.lib;llama.lib;ggml.lib;ggml-base.lib;ggml-cpu.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
       <Command>
@@ -202,7 +202,9 @@ copy /Y / D "$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Debug\spdlogd.
     </PreLinkEvent>
     <PreBuildEvent>
       <Command>copy /Y / D "$(SolutionDir)HAMGui\dep\glfw-3.3.8\glfw-3.3.8\build\src\Release\glfw3.dll" "$(OutDir)"
-copy /Y / D "$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Release\spdlog.lib" "$(OutDir)"</Command>
+copy /Y / D "$(SolutionDir)HAMGui\dep\spdlog-1.x\spdlog-1.x\build\Release\spdlog.lib" "$(OutDir)"
+copy /Y /D "$(SolutionDir)HAMGui\dep\llama.cpp\build\ggml\src\Release\*.lib" "$(OutDir)"
+copy /Y /D "$(SolutionDir)HAMGui\dep\llama.cpp\build\src\Release\llama.lib" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

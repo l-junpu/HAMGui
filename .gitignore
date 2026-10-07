@@ -17,6 +17,7 @@
 mono_crash.*
 
 # Build results
+/HAMGui/dep/glfw-3.3.8/glfw-3.3.8/build/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
